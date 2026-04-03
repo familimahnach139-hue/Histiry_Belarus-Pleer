@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>История Беларуси 🎧</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: white;
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.player {
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.title {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 15px 0;
+}
+
+.btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:active {
+    transform: scale(0.9);
+}
+
+.play {
+    width: 70px;
+    height: 70px;
+    background: #4CAF50;
+}
+
+.prev, .next {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.progress {
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #4CAF50, #00e676);
+}
+
+.time {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    opacity: 0.7;
+    margin-top: 5px;
+}
+
+.list {
+    margin-top: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.item {
+    padding: 12px;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.item:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+.active {
+    background: rgba(76,175,80,0.3);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>🎧 История Беларуси</h1>
+
+<div class="player">
+<div class="title" id="title">Билет 1</div>
+
+<div class="controls">
+<button class="btn prev" onclick="prev()">⏮</button>
+<button class="btn play" onclick="toggle()">▶</button>
+<button class="btn next" onclick="next()">⏭</button>
+</div>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+
+<div class="time">
+<span id="current">0:00</span>
+<span id="duration">0:00</span>
+</div>
+</div>
+
+<div class="list" id="list"></div>
+
+<audio id="audio"></audio>
+</div>
+
+<script>
+let current = 0;
+
+const tracks = Array.from({length: 25}, (_, i) => ({
+    title: "Билет " + (i + 1),
+    src: "audio/" + (i + 1) + ".mp3"
+}));
+
+const audio = document.getElementById("audio");
+const title = document.getElementById("title");
+const list = document.getElementById("list");
+const bar = document.getElementById("bar");
+const currentTimeEl = document.getElementById("current");
+const durationEl = document.getElementById("duration");
+
+function render() {
+    list.innerHTML = "";
+    tracks.forEach((t, i) => {
+        const el = document.createElement("div");
+        el.className = "item" + (i === current ? " active" : "");
+        el.innerText = t.title;
+        el.onclick = () => load(i);
+        list.appendChild(el);
+    });
+}
+
+function load(i) {
+    current = i;
+    audio.src = tracks[i].src;
+    title.innerText = tracks[i].title;
+    render();
+    audio.play();
+}
+
+function toggle() {
+    if (audio.paused) audio.play();
+    else audio.pause();
+}
+
+function next() {
+    current = (current + 1) % tracks.length;
+    load(current);
+}
+
+function prev() {
+    current = (current - 1 + tracks.length) % tracks.length;
+    load(current);
+}
+
+function format(t) {
+    const m = Math.floor(t / 60);
+    const s = Math.floor(t % 60);
+    return m + ":" + (s < 10 ? "0" + s : s);
+}
+
+audio.ontimeupdate = () => {
+    if (audio.duration) {
+        bar.style.width = (audio.currentTime / audio.duration) * 100 + "%";
+        currentTimeEl.innerText = format(audio.currentTime);
+        durationEl.innerText = format(audio.duration);
+    }
+};
+
+audio.onended = next;
+
+if ('mediaSession' in navigator) {
+    navigator.mediaSession.setActionHandler('play', () => audio.play());
+    navigator.mediaSession.setActionHandler('pause', () => audio.pause());
+    navigator.mediaSession.setActionHandler('nexttrack', next);
+    navigator.mediaSession.setActionHandler('previoustrack', prev);
+}
+
+render();
+load(0);
+</script>
+
+</body>
+</html>
