@@ -23,44 +23,68 @@ body {
     overflow-x: hidden;
 }
 
-/* Гигантская буква V на фоне — без рамок, без блюра, без свечения */
+/* Гигантская буква V — интенсивная, выделяющаяся, без размытия */
 .background-v {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: min(70vw, 70vh);
+    font-size: min(75vw, 75vh);
     font-weight: 900;
     font-family: 'Arial Black', 'Impact', 'Inter', sans-serif;
-    color: rgba(70, 130, 200, 0.1);
     user-select: none;
     pointer-events: none;
     z-index: 0;
     letter-spacing: -0.05em;
     white-space: nowrap;
-    /* Убраны text-shadow, анимация, размытие — чистая буква */
+    
+    /* Яркий градиент + высокая непрозрачность */
+    background: linear-gradient(135deg, #4a9eff, #00c3ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    
+    /* Лёгкое свечение для выразительности (без размытия — просто тень) */
+    text-shadow: 0 0 8px rgba(74, 158, 255, 0.5), 0 0 16px rgba(0, 195, 255, 0.3);
+    
+    /* Плавное изменение яркости */
+    animation: gentlePulse 4s infinite alternate;
 }
 
-/* Карточка — без блюра, без рамки, без лишних теней */
+@keyframes gentlePulse {
+    0% {
+        text-shadow: 0 0 5px rgba(74, 158, 255, 0.3), 0 0 10px rgba(0, 195, 255, 0.2);
+        background: linear-gradient(135deg, #4a9eff, #00c3ff);
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+    100% {
+        text-shadow: 0 0 16px rgba(74, 158, 255, 0.7), 0 0 28px rgba(0, 195, 255, 0.5);
+        background: linear-gradient(135deg, #6cb2ff, #33d0ff);
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+}
+
+/* Карточка — строгая, без блюра */
 .card {
     position: relative;
     z-index: 2;
     max-width: 550px;
     width: 100%;
-    background: rgba(10, 20, 30, 0.75);
+    background: rgba(10, 20, 30, 0.85);
     border-radius: 48px;
     padding: 40px 32px;
     text-align: center;
-    /* Убраны backdrop-filter, border, box-shadow inset, псевдоэлемент */
     transition: transform 0.2s ease;
+    backdrop-filter: none;
+    border: none;
 }
 
 .card:hover {
     transform: scale(1.01);
-    /* без дополнительных рамок и свечений */
 }
 
-/* Иконка / мини-лого */
 .icon {
     font-size: 64px;
     margin-bottom: 16px;
@@ -90,9 +114,9 @@ h1 {
     background: rgba(0, 30, 50, 0.7);
     padding: 12px 28px;
     border-radius: 60px;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     color: #7ad0ff;
     text-decoration: none;
     border: 1px solid rgba(90, 180, 250, 0.4);
@@ -157,7 +181,7 @@ h1 {
     padding-top: 20px;
 }
 
-/* Адаптация для планшетов и телефонов */
+/* Адаптация */
 @media (max-width: 600px) {
     .card {
         padding: 28px 20px;
@@ -170,8 +194,8 @@ h1 {
         font-size: 1rem;
     }
     .domain-link {
-        font-size: 1.1rem;
-        padding: 8px 20px;
+        font-size: 1rem;
+        padding: 8px 16px;
     }
     .btn {
         padding: 10px 20px;
@@ -182,7 +206,6 @@ h1 {
     }
     .background-v {
         font-size: min(85vw, 85vh);
-        color: rgba(70, 130, 200, 0.08);
     }
 }
 
@@ -213,11 +236,11 @@ h1 {
         Пожалуйста, обновите закладки.
     </div>
     
-    <a href="https://mahnachivan-dev.github.io/Histiry-Belarus_Player/" class="domain-link" id="newDomainLink">mahnachivan-dev/Histiry-Belarus_Player//</a>
+    <a href="https://mahnachivan-dev.github.io/Histiry-Belarus_Player/" class="domain-link" id="newDomainLink">mahnachivan-dev/Histiry-Belarus_Player/</a>
     
     <div class="button-group">
         <a href="https://mahnachivan-dev.github.io/Histiry-Belarus_Player/" class="btn btn-primary" id="redirectBtn">⟳ Перейти на новый сайт</a>
-        <a href="https://mahnachivan-dev.github.io/Histiry-Belarus_Player/" class="btn btn-secondary" id="copyBtn"> Скопировать ссылку</a>
+        <a href="#" class="btn btn-secondary" id="copyBtn">Скопировать ссылку</a>
     </div>
     
     <div class="footer-note">
@@ -226,9 +249,9 @@ h1 {
 </div>
 
 <script>
-    // Реальная ссылка (замените при необходимости)
+    // Реальная ссылка
     const NEW_DOMAIN = "https://mahnachivan-dev.github.io/Histiry-Belarus_Player/";
-    const DISPLAY_LINK = "https://mahnachivan-dev.github.io/Histiry-Belarus_Player/";
+    const DISPLAY_LINK = "mahnachivan-dev/Histiry-Belarus_Player/";
     
     const domainLinkEl = document.getElementById('newDomainLink');
     const redirectBtn = document.getElementById('redirectBtn');
@@ -245,14 +268,14 @@ h1 {
             const originalText = copyBtn.innerHTML;
             copyBtn.innerHTML = '✅ Скопировано!';
             setTimeout(() => {
-                copyBtn.innerHTML = originalText;
+                copyBtn.innerHTML = '📋 Скопировать ссылку';
             }, 2000);
         }).catch(() => {
             alert('Не удалось скопировать. Выделите ссылку вручную.');
         });
     });
     
-    // Автоматический редирект через 5 секунд
+    // Автоматический редирект через 10 секунд
     let timeoutId = setTimeout(() => {
         window.location.href = NEW_DOMAIN;
     }, 10000);
