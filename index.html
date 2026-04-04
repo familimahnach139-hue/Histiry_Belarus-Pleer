@@ -1,306 +1,309 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Домен перенесён | V</title>
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Домен перенесён | V</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    min-height: 100vh;
-    background: radial-gradient(ellipse at 30% 40%, #0a0f1e, #03060c);
-    font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    position: relative;
-    overflow-x: hidden;
-}
+        body {
+            min-height: 100vh;
+            background: radial-gradient(ellipse at 30% 40%, #0a0f1e, #03060c);
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-/* Гигантская буква V — интенсивная, выделяющаяся, без размытия */
-.background-v {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: min(75vw, 75vh);
-    font-weight: 900;
-    font-family: 'Arial Black', 'Impact', 'Inter', sans-serif;
-    user-select: none;
-    pointer-events: none;
-    z-index: 0;
-    letter-spacing: -0.05em;
-    white-space: nowrap;
-    
-    /* Яркий градиент + высокая непрозрачность */
-    background: linear-gradient(135deg, #4a9eff, #00c3ff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    
-    /* Лёгкое свечение для выразительности (без размытия — просто тень) */
-    text-shadow: 0 0 8px rgba(74, 158, 255, 0.5), 0 0 16px rgba(0, 195, 255, 0.3);
-    
-    /* Плавное изменение яркости */
-    animation: gentlePulse 4s infinite alternate;
-}
+        .background-v {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: min(75vw, 75vh);
+            font-weight: 900;
+            font-family: 'Arial Black', 'Impact', 'Inter', sans-serif;
+            user-select: none;
+            pointer-events: none;
+            z-index: 0;
+            letter-spacing: -0.05em;
+            white-space: nowrap;
 
-@keyframes gentlePulse {
-    0% {
-        text-shadow: 0 0 5px rgba(74, 158, 255, 0.3), 0 0 10px rgba(0, 195, 255, 0.2);
-        background: linear-gradient(135deg, #4a9eff, #00c3ff);
-        background-clip: text;
-        -webkit-background-clip: text;
-    }
-    100% {
-        text-shadow: 0 0 16px rgba(74, 158, 255, 0.7), 0 0 28px rgba(0, 195, 255, 0.5);
-        background: linear-gradient(135deg, #6cb2ff, #33d0ff);
-        background-clip: text;
-        -webkit-background-clip: text;
-    }
-}
+            background: linear-gradient(135deg, #4a9eff, #00c3ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
 
-/* Карточка — строгая, без блюра */
-.card {
-    position: relative;
-    z-index: 2;
-    max-width: 550px;
-    width: 100%;
-    background: rgba(10, 20, 30, 0.85);
-    border-radius: 48px;
-    padding: 40px 32px;
-    text-align: center;
-    transition: transform 0.2s ease;
-    backdrop-filter: none;
-    border: none;
-}
+            text-shadow: 0 0 8px rgba(74, 158, 255, 0.5), 0 0 16px rgba(0, 195, 255, 0.3);
 
-.card:hover {
-    transform: scale(1.01);
-}
+            animation: gentlePulse 4s infinite alternate;
+        }
 
-.icon {
-    font-size: 64px;
-    margin-bottom: 16px;
-}
+        @keyframes gentlePulse {
+            0% {
+                text-shadow: 0 0 5px rgba(74, 158, 255, 0.3), 0 0 10px rgba(0, 195, 255, 0.2);
+                background: linear-gradient(135deg, #4a9eff, #00c3ff);
+                background-clip: text;
+                -webkit-background-clip: text;
+            }
 
-h1 {
-    font-size: 2.4rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #FFFFFF, #a0d0ff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    margin-bottom: 16px;
-    letter-spacing: -0.5px;
-}
+            100% {
+                text-shadow: 0 0 16px rgba(74, 158, 255, 0.7), 0 0 28px rgba(0, 195, 255, 0.5);
+                background: linear-gradient(135deg, #6cb2ff, #33d0ff);
+                background-clip: text;
+                -webkit-background-clip: text;
+            }
+        }
 
-.message {
-    font-size: 1.2rem;
-    color: #cbd5e6;
-    margin-bottom: 28px;
-    line-height: 1.5;
-    font-weight: 500;
-}
+        .card {
+            position: relative;
+            z-index: 2;
+            max-width: 550px;
+            width: 100%;
+            background: rgba(10, 20, 30, 0.85);
+            border-radius: 48px;
+            padding: 40px 32px;
+            text-align: center;
+            transition: transform 0.2s ease;
+            backdrop-filter: none;
+            border: none;
+        }
 
-.domain-link {
-    display: inline-block;
-    background: rgba(0, 30, 50, 0.7);
-    padding: 12px 28px;
-    border-radius: 60px;
-    font-size: 1.3rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    color: #7ad0ff;
-    text-decoration: none;
-    border: 1px solid rgba(90, 180, 250, 0.4);
-    transition: all 0.2s ease;
-    margin-bottom: 32px;
-    word-break: break-all;
-}
+        .card:hover {
+            transform: scale(1.01);
+        }
 
-.domain-link:hover {
-    background: #0a3550;
-    color: white;
-    border-color: #3ea5ff;
-    transform: scale(1.02);
-}
+        .icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
 
-.button-group {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FFFFFF, #a0d0ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
 
-.btn {
-    padding: 12px 28px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 40px;
-    text-decoration: none;
-    transition: 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    border: none;
-    background: rgba(255, 255, 255, 0.05);
-    color: #eef5ff;
-}
+        .message {
+            font-size: 1.2rem;
+            color: #cbd5e6;
+            margin-bottom: 28px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
 
-.btn-primary {
-    background: linear-gradient(95deg, #1e6f9f, #0e4a6e);
-    color: white;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-    border: none;
-}
+        .domain-link {
+            display: inline-block;
+            background: rgba(0, 30, 50, 0.7);
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #7ad0ff;
+            text-decoration: none;
+            border: 1px solid rgba(90, 180, 250, 0.4);
+            transition: all 0.2s ease;
+            margin-bottom: 32px;
+            word-break: break-all;
+        }
 
-.btn-primary:hover {
-    background: linear-gradient(95deg, #2a7fb0, #135c82);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
+        .domain-link:hover {
+            background: #0a3550;
+            color: white;
+            border-color: #3ea5ff;
+            transform: scale(1.02);
+        }
 
-.btn-secondary:hover {
-    background: rgba(255,255,255,0.12);
-    transform: translateY(-2px);
-}
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
 
-.footer-note {
-    margin-top: 36px;
-    font-size: 0.8rem;
-    color: #6c86a3;
-    border-top: 1px dashed rgba(72, 187, 255, 0.3);
-    padding-top: 20px;
-}
+        .btn {
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            border: none;
+            background: rgba(255, 255, 255, 0.05);
+            color: #eef5ff;
+        }
 
-/* Адаптация */
-@media (max-width: 600px) {
-    .card {
-        padding: 28px 20px;
-        border-radius: 36px;
-    }
-    h1 {
-        font-size: 1.8rem;
-    }
-    .message {
-        font-size: 1rem;
-    }
-    .domain-link {
-        font-size: 1rem;
-        padding: 8px 16px;
-    }
-    .btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-    .icon {
-        font-size: 48px;
-    }
-    .background-v {
-        font-size: min(85vw, 85vh);
-    }
-}
+        .btn-primary {
+            background: linear-gradient(95deg, #1e6f9f, #0e4a6e);
+            color: white;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+            border: none;
+        }
 
-@media (max-width: 450px) {
-    .button-group {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
-    }
-    .btn {
-        justify-content: center;
-    }
-    h1 {
-        font-size: 1.6rem;
-    }
-}
-</style>
+        .btn-primary:hover {
+            background: linear-gradient(95deg, #2a7fb0, #135c82);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .footer-note {
+            margin-top: 36px;
+            font-size: 0.8rem;
+            color: #6c86a3;
+            border-top: 1px dashed rgba(72, 187, 255, 0.3);
+            padding-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 28px 20px;
+                border-radius: 36px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .message {
+                font-size: 1rem;
+            }
+
+            .domain-link {
+                font-size: 1rem;
+                padding: 8px 16px;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .icon {
+                font-size: 48px;
+            }
+
+            .background-v {
+                font-size: min(85vw, 85vh);
+            }
+        }
+
+        @media (max-width: 450px) {
+            .button-group {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="background-v">V</div>
+    <div class="background-v">V</div>
 
-<div class="card">
-    <div class="icon"></div>
-    <h1>Домен перенесён</h1>
-    <div class="message">
-        Ресурс теперь доступен по новому домену.<br>
-        Пожалуйста, обновите закладки.
-    </div>
-    
-    <a href="https://mahnachivan-dev.github.io/Histiry-Belarus_Player/" class="domain-link" id="newDomainLink">mahnachivan-dev/Histiry-Belarus_Player/</a>
-    
-    <div class="button-group">
-        <a href="https://mahnachivan-dev.github.io/Histiry-Belarus_Player/" class="btn btn-primary" id="redirectBtn">⟳ Перейти на новый сайт</a>
-        <a href="#" class="btn btn-secondary" id="copyBtn">Скопировать ссылку</a>
-    </div>
-    
-    <div class="footer-note">
-        автоматическое перенаправление через 5 секунд
-    </div>
-</div>
+    <div class="card">
+        <div class="icon"></div>
+        <h1>Домен перенесён</h1>
+        <div class="message">
+            Ресурс теперь доступен по новому домену.<br>
+            Пожалуйста, обновите закладки.
+        </div>
 
-<script>
-    // Реальная ссылка
-    const NEW_DOMAIN = "https://mahnachivan-dev.github.io/Histiry-Belarus_Player/";
-    const DISPLAY_LINK = "mahnachivan-dev/Histiry-Belarus_Player/";
-    
-    const domainLinkEl = document.getElementById('newDomainLink');
-    const redirectBtn = document.getElementById('redirectBtn');
-    const copyBtn = document.getElementById('copyBtn');
-    
-    domainLinkEl.href = NEW_DOMAIN;
-    domainLinkEl.innerText = DISPLAY_LINK;
-    redirectBtn.href = NEW_DOMAIN;
-    
-    // Копирование ссылки
-    copyBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        navigator.clipboard.writeText(NEW_DOMAIN).then(() => {
-            const originalText = copyBtn.innerHTML;
-            copyBtn.innerHTML = '✅ Скопировано!';
-            setTimeout(() => {
-                copyBtn.innerHTML = '📋 Скопировать ссылку';
-            }, 2000);
-        }).catch(() => {
-            alert('Не удалось скопировать. Выделите ссылку вручную.');
+        <a href="https://mahnachivan-dev.github.io/Histiry-Belarus_Player/" class="domain-link"
+            id="newDomainLink">mahnachivan-dev/Histiry-Belarus_Player/</a>
+
+        <div class="button-group">
+            <a href="https://mahnachivan-dev.github.io/Histiry-Belarus_Player/" class="btn btn-primary"
+                id="redirectBtn">⟳ Перейти на новый сайт</a>
+            <a href="#" class="btn btn-secondary" id="copyBtn">Скопировать ссылку</a>
+        </div>
+
+        <div class="footer-note">
+            автоматическое перенаправление через 5 секунд
+        </div>
+    </div>
+
+    <script>
+        const NEW_DOMAIN = "https://mahnachivan-dev.github.io/Histiry-Belarus_Player/";
+        const DISPLAY_LINK = "mahnachivan-dev/Histiry-Belarus_Player/";
+
+        const domainLinkEl = document.getElementById('newDomainLink');
+        const redirectBtn = document.getElementById('redirectBtn');
+        const copyBtn = document.getElementById('copyBtn');
+
+        domainLinkEl.href = NEW_DOMAIN;
+        domainLinkEl.innerText = DISPLAY_LINK;
+        redirectBtn.href = NEW_DOMAIN;
+
+        copyBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(NEW_DOMAIN).then(() => {
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = '✅ Скопировано!';
+                setTimeout(() => {
+                    copyBtn.innerHTML = '📋 Скопировать ссылку';
+                }, 2000);
+            }).catch(() => {
+                alert('Не удалось скопировать. Выделите ссылку вручную.');
+            });
         });
-    });
-    
-    // Автоматический редирект через 10 секунд
-    let timeoutId = setTimeout(() => {
-        window.location.href = NEW_DOMAIN;
-    }, 5000);
-    
-    // Отмена авторедиректа при клике на ссылки
-    const cancelAutoRedirect = () => {
-        if (timeoutId) {
-            clearTimeout(timeoutId);
-            timeoutId = null;
-        }
-    };
-    
-    domainLinkEl.addEventListener('click', cancelAutoRedirect);
-    redirectBtn.addEventListener('click', cancelAutoRedirect);
-    copyBtn.addEventListener('click', cancelAutoRedirect);
-    
-    // Плавное появление карточки
-    const card = document.querySelector('.card');
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    setTimeout(() => {
-        card.style.transition = 'opacity 0.7s ease, transform 0.5s ease';
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0)';
-    }, 100);
-</script>
+
+        let timeoutId = setTimeout(() => {
+            window.location.href = NEW_DOMAIN;
+        }, 5000);
+
+        const cancelAutoRedirect = () => {
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+                timeoutId = null;
+            }
+        };
+
+        domainLinkEl.addEventListener('click', cancelAutoRedirect);
+        redirectBtn.addEventListener('click', cancelAutoRedirect);
+        copyBtn.addEventListener('click', cancelAutoRedirect);
+
+        const card = document.querySelector('.card');
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+            card.style.transition = 'opacity 0.7s ease, transform 0.5s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, 100);
+    </script>
 </body>
+
 </html>
